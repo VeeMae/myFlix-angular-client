@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 
 // The API URL that will provide data for the client app
 const apiUrl = 'https://myflix-movie-application.herokuapp.com/';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -35,6 +36,10 @@ export class UserRegistrationService {
     }
 }
 
+@Injectable({
+  providedIn: 'root'
+})
+
 export class UserLoginService {
 
     constructor(private http: HttpClient) { }
@@ -43,6 +48,12 @@ export class UserLoginService {
     public userLogin(userDetails: any): Observable<any> {
         console.log(userDetails);
         return this.http.post(apiUrl + 'login', userDetails).pipe(
+            map((user: any) => {
+                if (user && user.token) {
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                }
+                return user;
+            }),
             catchError(this.handleError)
         );
     }
@@ -78,7 +89,7 @@ export class GetAllMoviesService {
         );
     }
 
-    private extractResponseData(res: Response): any {
+    private extractResponseData(res: any): any {
         const body = res;
         return body || { };
     }
@@ -114,7 +125,7 @@ export class GetMovieByTitleService {
         );
     }
 
-    private extractResponseData(res: Response): any {
+    private extractResponseData(res: any): any {
         const body = res;
         return body || { };
     }
@@ -150,7 +161,7 @@ export class GetDirectorService {
         );
     }
 
-    private extractResponseData(res: Response): any {
+    private extractResponseData(res: any): any {
         const body = res;
         return body || { };
     }
@@ -186,7 +197,7 @@ export class GetGenreService {
         );
     }
 
-    private extractResponseData(res: Response): any {
+    private extractResponseData(res: any): any {
         const body = res;
         return body || { };
     }
@@ -222,7 +233,7 @@ export class GetUserService {
         );
     }
 
-    private extractResponseData(res: Response): any {
+    private extractResponseData(res: any): any {
         const body = res;
         return body || { };
     }
@@ -258,7 +269,7 @@ export class GetFaveMoviesService {
         );
     }
 
-    private extractResponseData(res: Response): any {
+    private extractResponseData(res: any): any {
         const body = res;
         return body || { };
     }
@@ -294,7 +305,7 @@ export class AddMovieService {
         );
     }
 
-    private extractResponseData(res: Response): any {
+    private extractResponseData(res: any): any {
         const body = res;
         return body || { };
     }
@@ -330,7 +341,7 @@ export class EditUserService {
         );
     }
 
-    private extractResponseData(res: Response): any {
+    private extractResponseData(res: any): any {
         const body = res;
         return body || { };
     }
@@ -366,7 +377,7 @@ export class DeleteUserService {
         );
     }
 
-    private extractResponseData(res: Response): any {
+    private extractResponseData(res: any): any {
         const body = res;
         return body || { };
     }
@@ -402,7 +413,7 @@ export class DeleteMovieService {
         );
     }
 
-    private extractResponseData(res: Response): any {
+    private extractResponseData(res: any): any {
         const body = res;
         return body || { };
     }

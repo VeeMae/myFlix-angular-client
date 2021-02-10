@@ -1,7 +1,7 @@
 <!-- Wiring up what was defined in the component's file with some HTML -->
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Sign Up!</mat-card-title>
+    <mat-card-title>Log in to get started!</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <form>
@@ -25,30 +25,11 @@
           required
         />
       </mat-form-field>
-      <mat-form-field>
-        <input
-          matInput
-          [(ngModel)]="userData.email"
-          type="email"
-          placeholder="Email"
-          name="Email"
-          required
-        />
-      </mat-form-field>
-      <mat-form-field>
-        <input
-          matInput
-          [(ngModel)]="userData.birthday"
-          type="date"
-          placeholder="Birthday"
-          name="Birthday"
-        />
-      </mat-form-field>
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button (click)="registerUser()" color="primary">
-      Sign Up
+    <button mat-raised-button (click)="loginUser()" color="primary">
+      Log In
     </button>
   </mat-card-actions>
 </mat-card>
