@@ -48,12 +48,12 @@ export class UserLoginService {
     public userLogin(userDetails: any): Observable<any> {
         console.log(userDetails);
         return this.http.post(apiUrl + 'login', userDetails).pipe(
-            map((user: any) => {
-                if (user && user.token) {
-                    localStorage.setItem('currentUser', JSON.stringify(user));
-                }
-                return user;
-            }),
+            // map((user: any) => {
+            //     if (user && user.token) {
+            //         localStorage.setItem('currentUser', JSON.stringify(user));
+            //     }
+            //     return user;
+            // }),
             catchError(this.handleError)
         );
     }
@@ -71,6 +71,10 @@ export class UserLoginService {
     }
 }
 
+@Injectable({
+  providedIn: 'root'
+})
+
 export class GetAllMoviesService {
 
     constructor(private http: HttpClient) { }
@@ -82,7 +86,7 @@ export class GetAllMoviesService {
             headers: new HttpHeaders(
                 {
                     Authorization: 'Bearer ' + token,
-                })
+                }),
         }).pipe(
             map(this.extractResponseData),
             catchError(this.handleError)
@@ -106,6 +110,10 @@ export class GetAllMoviesService {
     'Something bad happened; please try again later.');
     }
 }
+
+@Injectable({
+  providedIn: 'root'
+})
 
 export class GetMovieByTitleService {
 
@@ -143,6 +151,10 @@ export class GetMovieByTitleService {
     }
 }
 
+@Injectable({
+  providedIn: 'root'
+})
+
 export class GetDirectorService {
 
     constructor(private http: HttpClient) { }
@@ -178,6 +190,10 @@ export class GetDirectorService {
     'Something bad happened; please try again later.');
     }
 }
+
+@Injectable({
+  providedIn: 'root'
+})
 
 export class GetGenreService {
 
@@ -215,6 +231,10 @@ export class GetGenreService {
     }
 }
 
+@Injectable({
+  providedIn: 'root'
+})
+
 export class GetUserService {
 
     constructor(private http: HttpClient) { }
@@ -222,7 +242,8 @@ export class GetUserService {
     // API call to get user by username endpoint
     public getUser(): Observable<any> {
         const token = localStorage.getItem('token');
-        return this.http.get(apiUrl + 'users/:username' , {
+        const username = localStorage.getItem('user');
+        return this.http.get(apiUrl + `users/${username}` , {
             headers: new HttpHeaders(
                 {
                     Authorization: 'Bearer ' + token,
@@ -250,6 +271,10 @@ export class GetUserService {
     'Something bad happened; please try again later.');
     }
 }
+
+@Injectable({
+  providedIn: 'root'
+})
 
 export class GetFaveMoviesService {
 
@@ -258,7 +283,8 @@ export class GetFaveMoviesService {
     // API endpoint leads to user profile, which displays all of user's fave movies
     public getFaveMovies(): Observable<any> {
         const token = localStorage.getItem('token');
-        return this.http.get(apiUrl + 'users/:username' , {
+        const username = localStorage.getItem('user');
+        return this.http.get(apiUrl + `users/${username}` , {
             headers: new HttpHeaders(
                 {
                     Authorization: 'Bearer ' + token,
@@ -286,15 +312,20 @@ export class GetFaveMoviesService {
     'Something bad happened; please try again later.');
     }
 }
+
+@Injectable({
+  providedIn: 'root'
+})
 
 export class AddMovieService {
 
     constructor(private http: HttpClient) { }
 
     // API call to add a movie endpoint
-    public addMovie(): Observable<any> {
+    public addMovie(id: string): Observable<any> {
         const token = localStorage.getItem('token');
-        return this.http.put(apiUrl + 'users/:username/movies/:movieID' , {
+        const username = localStorage.getItem('user');
+        return this.http.put(apiUrl + `users/${username}/movies/${id}`, id, {
             headers: new HttpHeaders(
                 {
                     Authorization: 'Bearer ' + token,
@@ -322,15 +353,20 @@ export class AddMovieService {
     'Something bad happened; please try again later.');
     }
 }
+
+@Injectable({
+  providedIn: 'root'
+})
 
 export class EditUserService {
 
     constructor(private http: HttpClient) { }
 
     // API call to edit user endpoint
-    public editUser(): Observable<any> {
+    public editUser(userDetails: any): Observable<any> {
         const token = localStorage.getItem('token');
-        return this.http.put(apiUrl + 'users/:username' , {
+        const username = localStorage.getItem('user');
+        return this.http.put(apiUrl + `users/${username}` , userDetails, {
             headers: new HttpHeaders(
                 {
                     Authorization: 'Bearer ' + token,
@@ -358,6 +394,10 @@ export class EditUserService {
     'Something bad happened; please try again later.');
     }
 }
+
+@Injectable({
+  providedIn: 'root'
+})
 
 export class DeleteUserService {
 
@@ -395,14 +435,19 @@ export class DeleteUserService {
     }
 }
 
+@Injectable({
+  providedIn: 'root'
+})
+
 export class DeleteMovieService {
 
     constructor(private http: HttpClient) { }
 
     // API call to delete movie endpoint
-    public deleteMovie(): Observable<any> {
+    public deleteMovie(id: string): Observable<any> {
         const token = localStorage.getItem('token');
-        return this.http.delete(apiUrl + 'users/:username/movies/delete/:movieID' , {
+        const username = localStorage.getItem('user');
+        return this.http.delete(apiUrl + `users/${username}/movies/delete/${id}` , {
             headers: new HttpHeaders(
                 {
                     Authorization: 'Bearer ' + token,

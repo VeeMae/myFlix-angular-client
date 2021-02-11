@@ -1,0 +1,48 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.spacer2 {
+  margin-right: 30px;
+}
+
+.toolbar {
+  background-color: #29313f;
+  color: #fff;
+}
+
+div.movie-card-container {
+  display: flex;
+  flex-flow: row wrap;
+  text-align: center;
+}
+
+.movie-card {
+  margin: 10px;
+}
+
+.card-header {
+  text-align: center;
+  display: block;
+}
+
+.card-actions {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.card-actions:last-child {
+  width: 100%;
+  display: block;
+}
+
+.card-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.card-button:hover {
+  background-color: lightgray;
+}
