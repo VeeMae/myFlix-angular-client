@@ -64,14 +64,14 @@
 <div class="movie-card-container">
   <mat-card *ngFor="let movie of faveMovies; let i = index" class="movie-card">
     <mat-card-header class="card-header">
-      <mat-card-title>{{ movie }}</mat-card-title>
-      <!-- <mat-card-subtitle
+      <mat-card-title>{{ movie.Title }}</mat-card-title>
+      <mat-card-subtitle
         >Directed by: {{ movie.Director.Name }}</mat-card-subtitle
-      > -->
+      >
     </mat-card-header>
-    <!-- <img src="{{ movie.ImagePath }}" alt="{{ movie.Title }}" /> -->
+    <img src="{{ movie.ImagePath }}" alt="{{ movie.Title }}" />
     <mat-card-actions class="card-actions">
-      <!-- <button
+      <button
         mat-button
         color="primary"
         (click)="openGenreDialog(movie.Genre.Name, movie.Genre.Description)"
@@ -97,7 +97,7 @@
         (click)="openDescriptionDialog(movie.Description)"
       >
         Synopsis
-      </button> -->
+      </button>
       <button (click)="deleteFaveMovie(movie._id)" class="card-button">
         Delete
       </button>

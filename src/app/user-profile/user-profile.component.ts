@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -19,6 +19,8 @@ export class UserProfileComponent implements OnInit {
     @Input() userData = { username: '', password: '', email: '', birthday: ''};
 
     faveMovies: any[] = [];
+    movies: any[] = [];
+    faveMovieIds: any[] = [];
 
     constructor(
       public fetchApiData: EditUserService,
@@ -35,12 +37,21 @@ export class UserProfileComponent implements OnInit {
         this.getFaveMovies();
     }
 
+
     getFaveMovies(): void {
-        this.fetchApiDataMovies.getFaveMovies().subscribe((resp: any) => {
-            this.faveMovies = resp.FavoriteMovies;
-            console.log(this.faveMovies);
-            return this.faveMovies;
-        })
+        this.fetchApiDataAll.getAllMovies().subscribe((resp: any) => {
+            this.fetchApiDataMovies.getFaveMovies().subscribe((resp: any) => {
+                this.faveMovieIds = resp.FavoriteMovies;
+                console.log(this.faveMovieIds);
+
+                 this.faveMovies = this.movies.filter((movie) => this.faveMovieIds.includes(movie._id))
+                 console.log(this.faveMovies)
+            })
+
+             this.movies = resp;
+            console.log(this.movies);
+
+        });
     }
 
     deleteFaveMovie(id: string): void {
@@ -49,6 +60,13 @@ export class UserProfileComponent implements OnInit {
             this.snackBar.open('Movie has been deleted', 'OK', {
                 duration: 2000
             });
+
+            // Refresh page after deletion
+            this.router.navigate(['user'])
+            .then(() => {
+                window.location.reload();
+            });
+
         });
     }
 
