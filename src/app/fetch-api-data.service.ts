@@ -391,7 +391,7 @@ export class EditUserService {
         `Error body is: ${error.error}`);
     }
     return throwError(
-    'Something bad happened; please try again later.');
+    'Please make sure to fill in the required items properly!');
     }
 }
 
