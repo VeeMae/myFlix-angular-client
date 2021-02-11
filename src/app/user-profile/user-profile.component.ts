@@ -1,12 +1,12 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { GetUserService, EditUserService, GetFaveMoviesService, DeleteMovieService, GetAllMoviesService } from '../fetch-api-data.service';
+import { GetUserService, EditUserService, GetFaveMoviesService, DeleteMovieService, GetAllMoviesService, DeleteUserService } from '../fetch-api-data.service';
 import { MovieGenreComponent } from '../movie-genre/movie-genre.component';
 import { MovieDirectorComponent } from '../movie-director/movie-director.component';
 import { MovieDescriptionComponent } from '../movie-description/movie-description.component';
+import { DeleteUserComponent } from '../delete-user/delete-user.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -28,6 +28,7 @@ export class UserProfileComponent implements OnInit {
       public fetchApiDataUser: GetUserService,
       public fetchApiDataMovies: GetFaveMoviesService,
       public fetchApiDataDeleteMovie: DeleteMovieService,
+      public fetchApiDataDeleteUser: DeleteUserService,
       public dialog: MatDialog,
       public snackBar: MatSnackBar,
       private router: Router
@@ -66,7 +67,6 @@ export class UserProfileComponent implements OnInit {
             .then(() => {
                 window.location.reload();
             });
-
         });
     }
 
@@ -83,6 +83,12 @@ export class UserProfileComponent implements OnInit {
             duration: 2000
             });
         });
+    }
+
+    openDeleteUserDialog(): void {
+        this.dialog.open(DeleteUserComponent, {
+            width: '280px'
+        })
     }
 
     openGenreDialog(name: string, description: string): void {

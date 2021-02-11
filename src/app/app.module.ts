@@ -24,6 +24,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { MovieGenreComponent } from './movie-genre/movie-genre.component';
 import { MovieDirectorComponent } from './movie-director/movie-director.component';
 import { MovieDescriptionComponent } from './movie-description/movie-description.component';
+import { DeleteUserComponent } from './delete-user/delete-user.component';
 
 
 const appRoutes: Routes = [
@@ -43,7 +44,8 @@ const appRoutes: Routes = [
     UserProfileComponent,
     MovieGenreComponent,
     MovieDirectorComponent,
-    MovieDescriptionComponent
+    MovieDescriptionComponent,
+    DeleteUserComponent
   ],
     imports: [
       RouterModule.forRoot(appRoutes),

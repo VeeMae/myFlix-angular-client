@@ -406,7 +406,8 @@ export class DeleteUserService {
     // API call to delete user endpoint
     public deleteUser(): Observable<any> {
         const token = localStorage.getItem('token');
-        return this.http.delete(apiUrl + 'users/:username' , {
+        const username = localStorage.getItem('user');
+        return this.http.delete(apiUrl + `users/${username}` , {
             headers: new HttpHeaders(
                 {
                     Authorization: 'Bearer ' + token,
