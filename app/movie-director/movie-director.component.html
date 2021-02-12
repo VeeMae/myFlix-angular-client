@@ -1,0 +1,10 @@
+<mat-card>
+  <mat-card-header class="card-header">
+    <mat-card-title>{{ data.name }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>{{ data.bio }}</mat-card-content>
+  <mat-card-content class="birthday"
+    ><span>Birthday:</span>
+    {{ data.birth | date: "longDate" }}</mat-card-content
+  >
+</mat-card>
