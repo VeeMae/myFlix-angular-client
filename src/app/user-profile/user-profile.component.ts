@@ -58,8 +58,8 @@ export class UserProfileComponent implements OnInit {
     deleteFaveMovie(id: string): void {
         this.fetchApiDataDeleteMovie.deleteMovie(id).subscribe((resp: any) => {
             console.log(resp);
-            this.snackBar.open('Movie has been deleted', 'OK', {
-                duration: 2000
+            this.snackBar.open('Movie has been deleted.', 'OK', {
+                duration: 5000
             });
 
             // Refresh page after deletion
@@ -74,13 +74,16 @@ export class UserProfileComponent implements OnInit {
         this.fetchApiData.editUser(this.userData).subscribe((result) => {
             console.log(result);
             this.snackBar.open('Update successful!', 'OK', {
-                duration: 2000
+                duration: 5000
             });
-            this.router.navigate(['user']);
+             this.router.navigate(['user'])
+            .then(() => {
+                window.location.reload();
+            });
         }, (result) => {
             console.log(result)
             this.snackBar.open(result, 'OK', {
-            duration: 2000
+            duration: 5000
             });
         });
     }

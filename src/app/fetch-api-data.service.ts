@@ -32,7 +32,7 @@ export class UserRegistrationService {
         `Error body is: ${error.error}`);
     }
     return throwError(
-    'Something bad happened; please try again later.');
+    'Please fill out every field properly and try again!');
     }
 }
 
@@ -48,12 +48,6 @@ export class UserLoginService {
     public userLogin(userDetails: any): Observable<any> {
         console.log(userDetails);
         return this.http.post(apiUrl + 'login', userDetails).pipe(
-            // map((user: any) => {
-            //     if (user && user.token) {
-            //         localStorage.setItem('currentUser', JSON.stringify(user));
-            //     }
-            //     return user;
-            // }),
             catchError(this.handleError)
         );
     }
@@ -67,7 +61,7 @@ export class UserLoginService {
         `Error body is: ${error.error}`);
     }
     return throwError(
-    'Something bad happened; please try again later.');
+    'Please make sure you are entering the correct credentials and try again!');
     }
 }
 
@@ -391,7 +385,7 @@ export class EditUserService {
         `Error body is: ${error.error}`);
     }
     return throwError(
-    'Please make sure to fill in the required items properly!');
+    'Please make sure to fill in the required items properly and try again!');
     }
 }
 
