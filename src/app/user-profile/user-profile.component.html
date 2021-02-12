@@ -19,6 +19,7 @@
     <mat-card-content id="update-card-content">
       <form>
         <mat-form-field>
+          <mat-hint>Must be at least 5 characters</mat-hint>
           <input
             matInput
             [(ngModel)]="userData.username"
@@ -29,6 +30,7 @@
           />
         </mat-form-field>
         <mat-form-field>
+          <mat-hint>Must be alphanumeric and at least 5 characters</mat-hint>
           <input
             matInput
             [(ngModel)]="userData.password"

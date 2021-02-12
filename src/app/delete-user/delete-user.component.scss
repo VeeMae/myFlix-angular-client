@@ -1,18 +1,14 @@
-#delete-user-card {
-  width: 50%;
-}
-
 .card-header {
   text-align: center;
   display: block;
   padding: 0;
-  width: 100%;
 }
 
 .mat-card-title.mat-card-title {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   line-height: 1.3rem;
   color: #59201d;
+  padding: 5px;
 }
 
 .mat-card#delete-user-card.mat-card.mat-focus-indicator {
@@ -25,7 +21,7 @@
   border-color: transparent;
   color: #fff;
   border-radius: 5%;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   cursor: pointer;
 }
 
@@ -34,7 +30,7 @@
   border-color: transparent;
   color: #fff;
   border-radius: 5%;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   cursor: pointer;
 }
 

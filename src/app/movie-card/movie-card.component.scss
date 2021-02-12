@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Secular+One&display=swap");
+
 .spacer {
   flex: 1 1 auto;
 }
@@ -9,7 +11,7 @@
 .toolbar {
   background-color: #1f160a;
   color: #fff;
-  font-family: "Bree Serif", serif;
+  font-family: "Secular One", sans-serif;
 }
 
 .toolbar-header:hover {
@@ -65,12 +67,11 @@ div.movie-card-container {
   background-color: transparent;
   border-color: transparent;
   color: #fff;
-  font-family: "Bree Serif", serif;
+  font-family: "Secular One", sans-serif;
   cursor: pointer;
 }
 
 // Media Queries
-
 @media (max-width: 375px) {
   .mat-card-actions.mat-card-actions.card-actions {
     display: flex;

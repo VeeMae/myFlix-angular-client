@@ -21,13 +21,14 @@ export class WelcomePageComponent implements OnInit {
     openUserRegistrationDialog(): void {
         this.dialog.open(UserRegistrationFormComponent, {
             // Assign the dialog width
-            width: '280px'
+            width: '380px'
         });
     }
 
+    // Function that will open the dialog when login button is clicked
     openUserLoginDialog(): void {
         this.dialog.open(UserLoginFormComponent, {
-            width: '280px'
+            width: '380px'
         });
     }
 }

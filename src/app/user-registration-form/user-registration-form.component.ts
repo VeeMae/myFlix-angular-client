@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UserRegistrationService } from '../fetch-api-data.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
 // Selector property defines the custom HTML element, into which this component will render
@@ -39,5 +40,4 @@ export class UserRegistrationFormComponent implements OnInit {
             });
         });
     }
-
 }

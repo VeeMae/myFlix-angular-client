@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -38,7 +38,6 @@ export class UserProfileComponent implements OnInit {
         this.getFaveMovies();
     }
 
-
     getFaveMovies(): void {
         this.fetchApiDataAll.getAllMovies().subscribe((resp: any) => {
             this.fetchApiDataMovies.getFaveMovies().subscribe((resp: any) => {
@@ -48,10 +47,8 @@ export class UserProfileComponent implements OnInit {
                  this.faveMovies = this.movies.filter((movie) => this.faveMovieIds.includes(movie._id))
                  console.log(this.faveMovies)
             })
-
-             this.movies = resp;
+            this.movies = resp;
             console.log(this.movies);
-
         });
     }
 
@@ -61,12 +58,10 @@ export class UserProfileComponent implements OnInit {
             this.snackBar.open('Movie has been deleted.', 'OK', {
                 duration: 5000
             });
-
-            // Refresh page after deletion
-            this.router.navigate(['user'])
-            .then(() => {
-                window.location.reload();
-            });
+            setTimeout(() => this.router.navigate(['user'])
+                .then(() => {
+                    window.location.reload();
+                }),1500);
         });
     }
 
@@ -90,14 +85,14 @@ export class UserProfileComponent implements OnInit {
 
     openDeleteUserDialog(): void {
         this.dialog.open(DeleteUserComponent, {
-            width: '280px'
+            width: '300px'
         })
     }
 
     openGenreDialog(name: string, description: string): void {
         this.dialog.open(MovieGenreComponent, {
             data: { name, description},
-            width: '600px',
+            width: '500px',
             height: 'auto'
         });
     }
@@ -105,7 +100,7 @@ export class UserProfileComponent implements OnInit {
     openDirectorDialog(name: string, bio: string, birth: string): void {
         this.dialog.open(MovieDirectorComponent, {
             data: { name, bio, birth},
-            width: '600px',
+            width: '500px',
             height: 'auto'
         })
     }
@@ -113,7 +108,7 @@ export class UserProfileComponent implements OnInit {
     openDescriptionDialog(description: string): void {
         this.dialog.open(MovieDescriptionComponent, {
             data: { description},
-            width: '600px',
+            width: '500px',
             height: 'auto'
         })
     }
@@ -136,8 +131,4 @@ export class UserProfileComponent implements OnInit {
      logoutUser(): void {
         localStorage.clear();
     }
-
-
-
-
 }

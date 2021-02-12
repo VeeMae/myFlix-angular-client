@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './delete-user.component.html',
   styleUrls: ['./delete-user.component.scss']
 })
+
 export class DeleteUserComponent implements OnInit {
 
     constructor(
@@ -23,10 +24,10 @@ export class DeleteUserComponent implements OnInit {
 
     // Delete user function
     deleteUserData(): void {
-        this.fetchApiData.deleteUser().subscribe((result) => {
-            console.log(result);
+        this.fetchApiData.deleteUser().subscribe((resp: any) => {
+            console.log(resp);
             this.snackBar.open('User has been deleted!', 'OK', {
-                duration: 8000
+                duration: 2000
             });
         }, (result) => {
             console.log(result)
@@ -35,7 +36,7 @@ export class DeleteUserComponent implements OnInit {
             });
 
             // Refresh page after deletion
-            this.router.navigate(['/'])
+            this.router.navigate(['/welcome'])
             .then(() => {
                 window.location.reload();
             });
