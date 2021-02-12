@@ -79,6 +79,9 @@ export class UserProfileComponent implements OnInit {
              this.router.navigate(['user'])
             .then(() => {
                 window.location.reload();
+                this.snackBar.open('Update successful!', 'OK', {
+                duration: 5000
+                });
             });
         }, (result) => {
             console.log(result)
