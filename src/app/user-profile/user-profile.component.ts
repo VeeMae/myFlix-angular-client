@@ -119,13 +119,13 @@ export class UserProfileComponent implements OnInit {
         this.fetchApiDataUser.getUser().subscribe((result) => {
             localStorage.getItem('token')
             const username = localStorage.getItem('user');
-            this.snackBar.open(`Welcome ${username}!`, 'OK', {
-            duration: 8000
+            this.snackBar.open(`Welcome to your profile, ${username}!`, 'OK', {
+            duration: 5000
             });
             this.router.navigate(['user']);
         }, (result) => {
             this.snackBar.open(result, 'OK', {
-            duration: 8000
+            duration: 5000
             });
         });
     }

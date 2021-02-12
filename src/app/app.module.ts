@@ -13,7 +13,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule, Routes } from '@angular/router';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
@@ -61,7 +62,8 @@ const appRoutes: Routes = [
       MatDialogModule,
       MatSnackBarModule,
       MatIconModule,
-      MatToolbarModule
+      MatToolbarModule,
+      MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

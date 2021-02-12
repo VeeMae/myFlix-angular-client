@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap");
+
 .main-page {
   height: 100%;
   text-align: center;
@@ -5,5 +7,15 @@
 
 .main-page-header {
   margin: 200px auto;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
+  font-family: "Bree Serif", serif;
+  text-transform: uppercase;
+  font-size: 2rem;
+  color: #fff;
+}
+
+.sign-up-btn {
+  background-color: #3d7b48;
+  color: #fff;
+  margin-right: 25px;
 }
