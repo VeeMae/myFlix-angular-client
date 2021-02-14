@@ -96,7 +96,7 @@ export class UserProfileComponent implements OnInit {
      */
     editUserData(): void {
         this.fetchApiData.editUser(this.userData).subscribe((result) => {
-            console.log(result);
+            localStorage.setItem('user', result.username);
             this.snackBar.open('Update successful!', 'OK', {
                 duration: 5000
             });
@@ -171,7 +171,7 @@ export class UserProfileComponent implements OnInit {
             this.snackBar.open(`Welcome to your profile, ${username}!`, 'OK', {
             duration: 5000
             });
-            this.router.navigate(['/user']);
+            this.router.navigate(['user']);
         }, (result) => {
             this.snackBar.open(result, 'OK', {
             duration: 5000
