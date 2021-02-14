@@ -171,7 +171,7 @@ export class UserProfileComponent implements OnInit {
             this.snackBar.open(`Welcome to your profile, ${username}!`, 'OK', {
             duration: 5000
             });
-            this.router.navigate(['user']);
+            this.router.navigate(['/user']);
         }, (result) => {
             this.snackBar.open(result, 'OK', {
             duration: 5000
