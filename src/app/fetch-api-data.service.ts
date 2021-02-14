@@ -13,9 +13,16 @@ const apiUrl = 'https://myflix-movie-application.herokuapp.com/';
 
 export class UserRegistrationService {
 
+    /**
+     * Gets called when creating an instance of the class
+     * @param http
+     */
     constructor(private http: HttpClient) { }
 
-    // API call for the user registration endpoint
+    /**
+     * API call to get registration endpoint
+     * @param userDetails
+     */
     public userRegistration(userDetails: any): Observable<any> {
         console.log(userDetails);
         return this.http.post(apiUrl + 'users', userDetails).pipe(
@@ -23,6 +30,10 @@ export class UserRegistrationService {
         );
     }
 
+    /**
+     * Function to handle errors
+     * @param error
+     */
     private handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
     console.error('Some error occurred:', error.error.message);
@@ -42,9 +53,16 @@ export class UserRegistrationService {
 
 export class UserLoginService {
 
+    /**
+     * Gets called when creating an instance of the class
+     * @param http
+     */
     constructor(private http: HttpClient) { }
 
-    // API call for the user login endpoint
+    /**
+     * API call to get login endpoint
+     * @param userDetails
+     */
     public userLogin(userDetails: any): Observable<any> {
         console.log(userDetails);
         return this.http.post(apiUrl + 'login', userDetails).pipe(
@@ -52,6 +70,10 @@ export class UserLoginService {
         );
     }
 
+    /**
+     * Function to handle errors
+     * @param error
+     */
     private handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
     console.error('Some error occurred:', error.error.message);
@@ -71,9 +93,15 @@ export class UserLoginService {
 
 export class GetAllMoviesService {
 
+    /**
+     * Gets called when creating an instance of the class
+     * @param http
+     */
     constructor(private http: HttpClient) { }
 
-    // API call to get all movies endpoint
+    /**
+     * API call to get all movies endpoint
+     */
     public getAllMovies(): Observable<any> {
         const token = localStorage.getItem('token');
         return this.http.get(apiUrl + 'movies', {
@@ -111,9 +139,15 @@ export class GetAllMoviesService {
 
 export class GetMovieByTitleService {
 
+    /**
+     * Gets called when creating an instance of the class
+     * @param http
+     */
     constructor(private http: HttpClient) { }
 
-    // API call to get movie by title endpoint
+    /**
+     * API call to get movie by title
+     */
     public getMovieByTitle(): Observable<any> {
         const token = localStorage.getItem('token');
         return this.http.get(apiUrl + 'movies/:Title' , {
@@ -151,9 +185,15 @@ export class GetMovieByTitleService {
 
 export class GetDirectorService {
 
+    /**
+     * Gets called when creating an instance of the class
+     * @param http
+     */
     constructor(private http: HttpClient) { }
 
-    // API call to get a director by name endpoint
+    /**
+     * API call to get director by name
+     */
     public getDirector(): Observable<any> {
         const token = localStorage.getItem('token');
         return this.http.get(apiUrl + 'movies/director/:Name' , {
@@ -191,9 +231,15 @@ export class GetDirectorService {
 
 export class GetGenreService {
 
+    /**
+     * Gets called when creating an instance of the class
+     * @param http
+     */
     constructor(private http: HttpClient) { }
 
-    // API call to get a genre by name endpoint
+    /**
+     * API call to get genre by name
+     */
     public getGenre(): Observable<any> {
         const token = localStorage.getItem('token');
         return this.http.get(apiUrl + 'movies/genre/:Name' , {
@@ -231,9 +277,15 @@ export class GetGenreService {
 
 export class GetUserService {
 
+    /**
+     * Gets called when creating an instance of the class
+     * @param http
+     */
     constructor(private http: HttpClient) { }
 
-    // API call to get user by username endpoint
+    /**
+     * API call to get user endpoint
+     */
     public getUser(): Observable<any> {
         const token = localStorage.getItem('token');
         const username = localStorage.getItem('user');
@@ -272,9 +324,15 @@ export class GetUserService {
 
 export class GetFaveMoviesService {
 
+    /**
+     * Gets called when creating an instance of the class
+     * @param http
+     */
     constructor(private http: HttpClient) { }
 
-    // API endpoint leads to user profile, which displays all of user's fave movies
+    /**
+     * API call to get user information, which contains the user's list of favorite movies
+     */
     public getFaveMovies(): Observable<any> {
         const token = localStorage.getItem('token');
         const username = localStorage.getItem('user');
@@ -313,9 +371,16 @@ export class GetFaveMoviesService {
 
 export class AddMovieService {
 
+    /**
+     * Gets called when creating an instance of the class
+     * @param http
+     */
     constructor(private http: HttpClient) { }
 
-    // API call to add a movie endpoint
+    /**
+     * API call to add a movie to user's list of favorites by movie Id
+     * @param id
+     */
     public addMovie(id: string): Observable<any> {
         const token = localStorage.getItem('token');
         const username = localStorage.getItem('user');
@@ -354,9 +419,16 @@ export class AddMovieService {
 
 export class EditUserService {
 
+    /**
+     * Gets called when creating an instance of the class
+     * @param http
+     */
     constructor(private http: HttpClient) { }
 
-    // API call to edit user endpoint
+    /**
+     * API call to post new user information to user's profile
+     * @param userDetails
+     */
     public editUser(userDetails: any): Observable<any> {
         const token = localStorage.getItem('token');
         const username = localStorage.getItem('user');
@@ -395,9 +467,15 @@ export class EditUserService {
 
 export class DeleteUserService {
 
+    /**
+     * Gets called when creating an instance of the class
+     * @param http
+     */
     constructor(private http: HttpClient) { }
 
-    // API call to delete user endpoint
+    /**
+     * API call to delete user from the database
+     */
     public deleteUser(): Observable<any> {
         const token = localStorage.getItem('token');
         const username = localStorage.getItem('user');
@@ -436,9 +514,16 @@ export class DeleteUserService {
 
 export class DeleteMovieService {
 
+    /**
+     * Gets called when creating an instance of the class
+     * @param http
+     */
     constructor(private http: HttpClient) { }
 
-    // API call to delete movie endpoint
+    /**
+     * API call to delete a movie from user's list of favorites
+     * @param id
+     */
     public deleteMovie(id: string): Observable<any> {
         const token = localStorage.getItem('token');
         const username = localStorage.getItem('user');

@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UserRegistrationService } from '../fetch-api-data.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { FormControl, Validators } from '@angular/forms';
 
 @Component({
 // Selector property defines the custom HTML element, into which this component will render
@@ -15,6 +14,12 @@ export class UserRegistrationFormComponent implements OnInit {
 
   @Input() userData = { username: '', password: '', email: '', birthday: ''};
 
+    /**
+     * Gets called when creating an instance of the class
+     * @param fetchApiData
+     * @param dialogRef
+     * @param snackBar
+     */
     constructor(
       public fetchApiData: UserRegistrationService,
       public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
@@ -23,11 +28,11 @@ export class UserRegistrationFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-    // This is the function responsible for sending the form inputs to the backend
+    /**
+     * Function that sends user's inputs to the database
+     */
     registerUser(): void {
         this.fetchApiData.userRegistration(this.userData).subscribe((result) => {
-
-    // Logic for a successful user registration goes here! (To be implemented)
         this.dialogRef.close(); // This will close the modal on success!
         console.log(result)
         this.snackBar.open('Successfully registered user! Please log in to continue.', 'OK', {

@@ -17,6 +17,15 @@ export class MovieCardComponent implements OnInit {
 
   movies: any[] = [];
 
+    /**
+     * Gets called when creating an instance of the class
+     * @param fetchApiData
+     * @param fetchApiDataFaves
+     * @param fetchApiDataUser
+     * @param dialog
+     * @param snackBar
+     * @param router
+     */
     constructor(
         public fetchApiData: GetAllMoviesService,
         public fetchApiDataFaves: AddMovieService,
@@ -30,7 +39,9 @@ export class MovieCardComponent implements OnInit {
         this.getMovies();
     }
 
-    // Get all movies
+    /**
+     * Function to get all movies from the database.
+     */
     getMovies(): void {
         this.fetchApiData.getAllMovies().subscribe((resp: any) => {
             this.movies = resp;
@@ -39,7 +50,10 @@ export class MovieCardComponent implements OnInit {
         });
     }
 
-    // Add movie to faves
+    /**
+     * Function to add a movie to user's list of favorites by getting the movie's ID and posting it to user's profile.
+     * @param id
+     */
     addMovieToFaves(id: string): void {
         this.fetchApiDataFaves.addMovie(id).subscribe((resp: any) => {
             console.log(resp);
@@ -49,7 +63,11 @@ export class MovieCardComponent implements OnInit {
         });
     }
 
-    // Open genre info
+    /**
+     *Function to open the genre dialog, which displays information about the genre of the selected movie.
+     * @param name
+     * @param description
+     */
     openGenreDialog(name: string, description: string): void {
         this.dialog.open(MovieGenreComponent, {
             data: { name, description},
@@ -58,7 +76,12 @@ export class MovieCardComponent implements OnInit {
         });
     }
 
-    // Open director info
+   /**
+    * Function to open the director dialog, which displays information about the director of the selected movie.
+    * @param name
+    * @param bio
+    * @param birth
+    */
     openDirectorDialog(name: string, bio: string, birth: string): void {
         this.dialog.open(MovieDirectorComponent, {
             data: { name, bio, birth},
@@ -67,7 +90,10 @@ export class MovieCardComponent implements OnInit {
         })
     }
 
-    // Open description
+    /**
+     * Function to open the description dialog, which displays the summary of the selected movie.
+     * @param description
+     */
     openDescriptionDialog(description: string): void {
         this.dialog.open(MovieDescriptionComponent, {
             data: { description},
@@ -76,7 +102,9 @@ export class MovieCardComponent implements OnInit {
         })
     }
 
-    // Go to profile
+   /**
+    * Function to go to the user's profile, which will display a snackBar upon execution - alerting the user that they are now in their profile page.
+    */
     openProfile(): void {
         this.fetchApiDataUser.getUser().subscribe((result) => {
             localStorage.getItem('token')
@@ -92,7 +120,10 @@ export class MovieCardComponent implements OnInit {
         });
     }
 
-    // refresh when clicking myFlix name in toolbar
+    /**
+     * Function to refresh the page.
+     * @returns the movies page when clicked.
+     */
     refresh(): void {
         this.router.navigate(['/movies'])
             .then(() => {
@@ -100,7 +131,10 @@ export class MovieCardComponent implements OnInit {
             });
     }
 
-    // Logout function
+    /**
+     * Function to logout of the application.
+     * @returns the welcome page when clicked.
+     */
      logoutUser(): void {
         localStorage.clear();
     }

@@ -14,6 +14,13 @@ export class UserLoginFormComponent implements OnInit {
 
   @Input() userData = { username: '', password: '' };
 
+    /**
+     * Gets called when creating an instance of the class
+     * @param fetchApiData
+     * @param dialogRef
+     * @param snackBar
+     * @param router
+     */
     constructor(
       public fetchApiData: UserLoginService,
       public dialogRef: MatDialogRef<UserLoginFormComponent>,
@@ -24,11 +31,12 @@ export class UserLoginFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-    // This is the function responsible for sending the form inputs to the backend
+    /**
+     * Function that sends the user's inputs to the server for authentication
+     * @returns the movies homepage when authenticated
+     */
     loginUser(): void {
         this.fetchApiData.userLogin(this.userData).subscribe((result) => {
-
-    // Logic for a successful user login goes here
             this.dialogRef.close(); // This will close the modal on success!
             console.log(result)
             localStorage.setItem('user', result.user.username);

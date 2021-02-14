@@ -12,6 +12,13 @@ import { Router } from '@angular/router';
 
 export class DeleteUserComponent implements OnInit {
 
+    /**
+     * Gets called when creating an instance of the class
+     * @param fetchApiData
+     * @param dialogRef
+     * @param snackBar
+     * @param router
+     */
     constructor(
       public fetchApiData: DeleteUserService,
       public dialogRef: MatDialogRef<DeleteUserComponent>,
@@ -22,7 +29,9 @@ export class DeleteUserComponent implements OnInit {
   ngOnInit(): void {
   }
 
-    // Delete user function
+    /**
+     * Function to delete user from the database.
+     */
     deleteUserData(): void {
         this.fetchApiData.deleteUser().subscribe((resp: any) => {
             console.log(resp);
@@ -43,7 +52,7 @@ export class DeleteUserComponent implements OnInit {
         });
     }
 
-    // refresh after cancelling
+    // Function to refresh the page after a user clicks cancel when prompted to continue with the deletion of their profile.
     refresh(): void {
         this.router.navigate(['/user'])
             .then(() => {
