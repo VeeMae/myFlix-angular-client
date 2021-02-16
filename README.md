@@ -1,4 +1,4 @@
-# MyFlixAngularClient
+# myFlix Angular Client
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.4.
 
@@ -6,8 +6,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Build the client-side for the myFlix application (based on its existing server-side code - REST API and database) using Angular.
 
-![Chat Application Demo](/myFlix-angular-client.gif)
-![Chat Application Demo](/gif2.gif)
+![myFlix Angular Demo](/myFlix-angular-client.gif)
+![myFlix Angular Demo](/gif2.gif)
 
 
 ## User Stories 
@@ -20,9 +20,9 @@ Build the client-side for the myFlix application (based on its existing server-s
 - Simply open the application on any browser (Chrome recommended) and register to create a user profile.
 - Once registered, log in with your credentials, and you will be able to have access to the movies. 
 - Feel free to add movies by clicking on the heart icon. 
-- To delete movies from your list, simply click the `delete` button.
-- To update your profile, input your new username, password, and email (birthday: optional) into their corresponding fields. Then click the `update` button.
-- To delete your profile from the database, click on the `Delete Profile` button on the top right corner (next to `Logout` button. Once confirmed, your account will be deleted and cannot be taken back.
+- To delete movies from your list, simply click the `Delete` button at the bottom of the movie card.
+- To update your profile, input your new username, password, and email (birthday: optional) into their corresponding fields. Then click the `Update` button.
+- To delete your profile from the database, click on the `Delete Profile` button on the top right corner (next to the `Logout` button). Once confirmed, your account will be deleted and cannot be taken back.
 
 ## Development server
 
